@@ -1,10 +1,10 @@
 require 'githubanalytics'
 
+describe 'analysing a github user account' do
 
-describe 'setting up a client' do
-  
-  it 'should have an authenticated client' do
-    expect(client).to eq 'HannahKnights'
+  it 'should be able to retreive the name if a user' do
+    user = user('hannahknights')
+    expect(user.name).to eq 'Hannah Knights'
   end
 
 end
