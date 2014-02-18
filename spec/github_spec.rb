@@ -1,10 +1,17 @@
 require 'githubanalytics'
+  
+describe 'Github user analytics' do
+  
+  let (:user) { User.new('hannahknights') } 
 
-describe 'analysing a github user account' do
-
-  it 'should be able to retreive the name if a user' do
-    user = user('hannahknights')
+  it 'should be able to retreive the name of a user' do
     expect(user.name).to eq 'Hannah Knights'
   end
 
-end
+  it 'should be able to retreive the number of repos a user has' do
+    expect(user.repos).to eq 19
+  end
+
+end 
+
+

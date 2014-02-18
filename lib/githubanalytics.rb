@@ -1,14 +1,19 @@
 require 'octokit'
 
-# Setting Octokit up with O-Auth authentication
+class User
 
+  def initialize(username)
+    client = Octokit::Client.new :access_token => ENV['GITHUB_OAUTH']
+    user = client.user.login
+    @user = Octokit.user username
+  end
 
-Octokit::Client.new :access_token => ENV['GITHUB_OAUTH']
+  def name
+    @user.name
+  end
 
+  def repos
+    @user.rels[:repos].get.data.count
+  end
 
-# Retreiving analytics
-
-def user(username)
-  Octokit.user username
 end
-
